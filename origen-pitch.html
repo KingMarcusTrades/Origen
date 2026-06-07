@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origen — For Independent Roasters</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #F2EEE6;
+  --ink: #1A1714;
+  --ink-mid: #4A4540;
+  --ink-soft: #9A9590;
+  --accent: #B85C20;
+  --accent-warm: #D4783A;
+  --rule: rgba(26,23,20,0.12);
+  --surface: #E8E3D8;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Instrument Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Large background word */
+.hero-bg-word {
+  position: absolute;
+  bottom: -60px;
+  right: -40px;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(180px, 28vw, 380px);
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(26,23,20,0.06);
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.04em;
+}
+
+/* nav */
+.nav {
+  padding: 28px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* hero content */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 56px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeUp 0.7s ease 0.1s forwards;
+}
+
+.eyebrow-line {
+  width: 36px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+.eyebrow-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-h1 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(52px, 8.5vw, 120px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 48px;
+  max-width: 900px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.hero-h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.hero-body-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 900px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.35s forwards;
+}
+
+.hero-body {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--ink-mid);
+}
+
+.hero-body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.hero-cta-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  display: inline-block;
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.22s;
+  text-align: center;
+}
+.btn-primary:hover { background: var(--accent); }
+
+.btn-secondary {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  background: transparent;
+  color: var(--ink-mid);
+  border: 1.5px solid var(--rule);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  text-align: center;
+}
+.btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+/* hero bottom strip */
+.hero-strip {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  margin-top: 56px;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+  position: relative;
+  z-index: 10;
+}
+
+.strip-item {
+  flex: 1;
+  padding: 24px 32px;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.strip-item:last-child { border-right: none; }
+
+.strip-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.strip-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* ── THE PROBLEM ── */
+.problem {
+  padding: 120px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+.problem-h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.problem-h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink-soft);
+}
+
+.problem-right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pain-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  transition: transform 0.2s;
+}
+.pain-item:hover { transform: translateX(4px); }
+
+.pain-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.4;
+}
+
+.pain-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.pain-desc {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+/* ── HOW IT WORKS ── */
+.how {
+  padding: 120px 56px;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-bg {
+  position: absolute;
+  top: -80px;
+  left: -60px;
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 400px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+  pointer-events: none;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.how-label { color: var(--accent-warm); }
+.how-label::before { background: var(--accent-warm); }
+
+.how-h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #F2EEE6;
+  margin-bottom: 72px;
+  max-width: 600px;
+}
+
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+
+.step {
+  background: rgba(255,255,255,0.04);
+  padding: 36px 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  transition: background 0.2s;
+}
+.step:hover { background: rgba(255,255,255,0.07); }
+
+.step-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 64px;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+}
+
+.step-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #F2EEE6;
+  margin-bottom: 10px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: rgba(242,238,230,0.55);
+  line-height: 1.7;
+}
+
+.step-accent {
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 48px;
+  background: var(--accent-warm);
+}
+
+/* ── WHAT YOU GET ── */
+.offer {
+  padding: 120px 56px;
+  border-top: 1px solid var(--rule);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 64px;
+}
+
+.offer-h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.offer-h2 em {
+  font-style: italic;
+  font-weight: 300;
+}
+
+.offer-features {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+}
+
+.feature {
+  background: var(--bg);
+  padding: 22px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  transition: background 0.18s;
+}
+.feature:hover { background: var(--surface); }
+
+.feature-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--ink);
+  color: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.feature-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.feature-desc {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.offer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Pricing card */
+.pricing-card {
+  background: var(--surface);
+  padding: 40px;
+  border: 1px solid var(--rule);
+}
+
+.pricing-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.pricing-model {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.pricing-desc {
+  font-size: 14px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.pricing-detail {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+}
+
+/* Testimonial / proof */
+.proof-card {
+  background: var(--ink);
+  padding: 40px;
+  position: relative;
+}
+
+.proof-quote {
+  font-family: 'Fraunces', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #F2EEE6;
+  margin-bottom: 24px;
+}
+
+.proof-attribution {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-warm);
+}
+
+.proof-mark {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-family: 'Fraunces', serif;
+  font-size: 80px;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  line-height: 1;
+}
+
+/* ── SAMPLE LOTS ── */
+.lots {
+  padding: 120px 56px;
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+}
+
+.lots-h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: clamp(36px, 4vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 48px;
+  max-width: 600px;
+}
+
+.lots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--rule);
+  margin-bottom: 40px;
+}
+
+.lot-card {
+  background: var(--bg);
+  padding: 32px 28px;
+  transition: background 0.18s;
+}
+.lot-card:hover { background: #EBE6DC; }
+
+.lot-origin {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.lot-name {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.lot-notes {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.lot-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.lot-score {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.lot-score span {
+  font-family: 'Instrument Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  display: block;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lot-price {
+  text-align: right;
+}
+
+.lot-price-num {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.lot-price-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+}
+
+.lots-note {
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── CTA ── */
+.cta-section {
+  padding: 140px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--rule);
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cta-bg-word {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: 360px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(26,23,20,0.05);
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 10;
+}
+
+.cta-h2 {
+  font-family: 'Fraunces', serif;
+  font-weight: 900;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+
+.cta-h2 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.cta-sub {
+  font-size: 17px;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto 48px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cta-contact {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 24px;
+}
+
+.cta-contact a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  transition: border-color 0.18s;
+}
+.cta-contact a:hover { border-color: var(--ink); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 28px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.footer-note {
+  font-size: 12px;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav, .hero-content, .problem, .offer, .lots, .cta-section, footer {
+    padding-left: 28px; padding-right: 28px;
+  }
+  .hero-strip .strip-item { padding: 20px 20px; }
+  .hero-body-row, .problem, .offer-grid { grid-template-columns: 1fr; gap: 40px; }
+  .how-steps, .lots-grid { grid-template-columns: 1fr 1fr; }
+  .how { padding: 80px 28px; }
+  .step-num { font-size: 40px; }
+}
+
+@media (max-width: 600px) {
+  .hero-strip { flex-direction: column; }
+  .strip-item { border-right: none; border-bottom: 1px solid var(--rule); }
+  .how-steps, .lots-grid { grid-template-columns: 1fr; }
+  .cta-actions { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-word">Origin</div>
+
+  <nav class="nav">
+    <a href="#" class="nav-logo">Origen</a>
+    <span class="nav-tag">For Independent Roasters</span>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">Private green bean sourcing</span>
+    </div>
+    <h1 class="hero-h1">
+      The beans that<br>make your <em>roastery</em><br>worth talking about.
+    </h1>
+    <div class="hero-body-row">
+      <p class="hero-body">
+        Origen connects independent roasters directly with <strong>verified micro-lot producers</strong> across eleven origins. Every lot is Q-grader cupped, scored, and traceable to farm level — with samples dispatched within 48 hours.
+      </p>
+      <div class="hero-cta-block">
+        <a href="#cta" class="btn-primary">Request your first sample</a>
+        <a href="#how" class="btn-secondary">See how it works</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-strip">
+    <div class="strip-item">
+      <div class="strip-num">24</div>
+      <div class="strip-label">Verified lots<br>available now</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">87+</div>
+      <div class="strip-label">Average SCA<br>cup score</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">48h</div>
+      <div class="strip-label">Sample dispatch<br>guaranteed</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-num">£0</div>
+      <div class="strip-label">Cost to join —<br>pay only on deals</div>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="problem reveal">
+  <div>
+    <div class="section-label">The problem</div>
+    <h2 class="problem-h2">
+      Sourcing exceptional<br>green coffee is<br><em>harder than it should be.</em>
+    </h2>
+  </div>
+  <div class="problem-right">
+    <div class="pain-item">
+      <div class="pain-num">01</div>
+      <div>
+        <div class="pain-title">You can't verify quality before committing</div>
+        <div class="pain-desc">Buying a full lot based on a spec sheet is a gamble. One bad harvest and your signature blend is off for a season.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">02</div>
+      <div>
+        <div class="pain-title">The supply chain is opaque and slow</div>
+        <div class="pain-desc">Brokers, intermediaries, and importers all add margin and remove accountability. By the time beans reach you, the story is gone.</div>
+      </div>
+    </div>
+    <div class="pain-item">
+      <div class="pain-num">03</div>
+      <div>
+        <div class="pain-title">Smaller roasters get the worst terms</div>
+        <div class="pain-desc">Volume buyers get priority access and better pricing. As an independent you're last in line — and first to be told a lot sold out.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how reveal" id="how">
+  <div class="how-bg">01</div>
+  <div class="section-label how-label">How it works</div>
+  <h2 class="how-h2">From browse to bag in four steps.</h2>
+  <div class="how-steps">
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">01</div>
+      <div class="step-title">Browse the catalogue</div>
+      <div class="step-desc">Access our private catalogue of curated micro-lots — each with full origin details, processing method, altitude, and Q-grader cup score.</div>
+    </div>
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">02</div>
+      <div class="step-title">Request a sample</div>
+      <div class="step-desc">Order 250g to 1kg samples before committing. We dispatch within 48 hours. Cup it, share it, decide — with no pressure and no obligation.</div>
+    </div>
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">03</div>
+      <div class="step-title">Confirm your lot</div>
+      <div class="step-desc">Happy with the cup? We finalise the contract, handle customs documentation, and arrange delivery directly to your roastery.</div>
+    </div>
+    <div class="step">
+      <div class="step-accent"></div>
+      <div class="step-num">04</div>
+      <div class="step-title">Pay only on deals</div>
+      <div class="step-desc">No subscription, no listing fees, no commitment. Origen charges a small sourcing fee only when a deal completes — aligned with your success.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="offer reveal">
+  <div class="section-label">What you get</div>
+  <div class="offer-grid">
+    <div>
+      <h2 class="offer-h2">Everything a serious roaster needs. <em>Nothing you don't.</em></h2>
+      <div class="offer-features" style="margin-top:40px">
+        <div class="feature">
+          <div class="feature-icon">◈</div>
+          <div>
+            <div class="feature-title">Q-grader verified cup scores</div>
+            <div class="feature-desc">Every lot on the catalogue has been independently cupped and scored by a licensed Q-grader before listing.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◈</div>
+          <div>
+            <div class="feature-title">Farm-level traceability</div>
+            <div class="feature-desc">Full documentation — farm name, GPS coordinates, harvest date, processing station. A story you can actually put on a bag.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◈</div>
+          <div>
+            <div class="feature-title">Sample first, commit second</div>
+            <div class="feature-desc">Cup before you buy. 250g to 1kg samples dispatched within 48 hours. No obligation to proceed.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◈</div>
+          <div>
+            <div class="feature-title">Contracts and logistics handled</div>
+            <div class="feature-desc">We manage supplier agreements, customs documentation, and delivery logistics. You focus on the roast.</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">◈</div>
+          <div>
+            <div class="feature-title">Secure escrow payments</div>
+            <div class="feature-desc">Payment is held until delivery is confirmed. No wiring money to producers you've never met.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offer-right">
+      <div class="pricing-card reveal">
+        <div class="pricing-label">Pricing model</div>
+        <div class="pricing-model">Free to join.<br>Pay on deals.</div>
+        <div class="pricing-desc">
+          No subscription fees, no listing charges, no commitment. Origen takes a small sourcing fee — typically 2–3% — only when a deal completes successfully.
+        </div>
+        <div class="pricing-detail">
+          On a 100kg lot at £8/kg, your total sourcing cost through Origen is <strong>£16–24</strong>. The alternative is weeks of back-and-forth with brokers who take far more.
+        </div>
+      </div>
+      <div class="proof-card reveal">
+        <div class="proof-mark">"</div>
+        <div class="proof-quote">"We spent three months chasing a Kenyan AA lot through two importers before finding it sold. Origen would have had it cupped and on a sample to us in a week."</div>
+        <div class="proof-attribution">Independent roaster, Manchester</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE LOTS -->
+<section class="lots reveal">
+  <div class="section-label">Current availability</div>
+  <h2 class="lots-h2">A taste of what's in the catalogue right now.</h2>
+  <div class="lots-grid">
+    <div class="lot-card">
+      <div class="lot-origin">Ethiopia · Gedeo Zone</div>
+      <div class="lot-name">Yirgacheffe Kochere</div>
+      <div class="lot-notes">"Bergamot, jasmine, lemon verbena — exceptional clarity."</div>
+      <div class="lot-meta">
+        <div class="lot-score">91.5<span>SCA Score</span></div>
+        <div class="lot-price">
+          <div class="lot-price-num">£8.20</div>
+          <div class="lot-price-label">per kg · washed</div>
+        </div>
+      </div>
+    </div>
+    <div class="lot-card">
+      <div class="lot-origin">Colombia · Huila</div>
+      <div class="lot-name">Huila El Paraíso</div>
+      <div class="lot-notes">"Tropical ferment, red wine, hibiscus — extraordinary depth."</div>
+      <div class="lot-meta">
+        <div class="lot-score">92.0<span>SCA Score</span></div>
+        <div class="lot-price">
+          <div class="lot-price-num">£11.80</div>
+          <div class="lot-price-label">per kg · anaerobic</div>
+        </div>
+      </div>
+    </div>
+    <div class="lot-card">
+      <div class="lot-origin">Panama · Chiriquí</div>
+      <div class="lot-name">Boquete Lerida</div>
+      <div class="lot-notes">"Honeysuckle, white peach, brown sugar — elegant and clean."</div>
+      <div class="lot-meta">
+        <div class="lot-score">90.0<span>SCA Score</span></div>
+        <div class="lot-price">
+          <div class="lot-price-num">£13.50</div>
+          <div class="lot-price-label">per kg · washed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="lots-note">24 lots currently available across 11 origins — <a href="#cta" style="color:var(--accent);text-decoration:none;font-weight:600">view the full catalogue →</a></p>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal" id="cta">
+  <div class="cta-bg"><div class="cta-bg-word">Origen</div></div>
+  <div class="cta-inner">
+    <div class="section-label" style="justify-content:center;margin-bottom:28px">
+      <span class="eyebrow-line"></span>
+      <span class="eyebrow-text">Get started</span>
+      <span class="eyebrow-line"></span>
+    </div>
+    <h2 class="cta-h2">Your next<br><em>exceptional</em> lot<br>starts here.</h2>
+    <p class="cta-sub">Request a free sample from any lot in the catalogue. No commitment, no subscription — just outstanding green coffee, verified and delivered.</p>
+    <div class="cta-actions">
+      <a href="https://origengreen.com/catalogue" class="btn-primary">Browse the catalogue</a>
+      <a href="mailto:marcus.eades@icloud.com?subject=Origen — Sample Request" class="btn-secondary">Email us directly</a>
+    </div>
+    <p class="cta-contact">
+      Questions? Reach Marcus directly at <a href="mailto:marcus.eades@icloud.com">marcus.eades@icloud.com</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Origen</div>
+  <div class="footer-note">Private sourcing network · hello@origengreen.com · London, UK</div>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(el => {
+    if (el.isIntersecting) {
+      el.target.classList.add('visible');
+      observer.unobserve(el.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Origen — Private Green Bean Catalogue</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #F4F1EC;
+  --surface: #EDEAE3;
+  --ink: #181714;
+  --ink-mid: #4A4844;
+  --ink-soft: #888580;
+  --accent: #B86B2A;
+  --rule: rgba(24,23,20,0.12);
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Figtree', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px; height: 68px;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+.nav-btn {
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-btn:hover, .nav-btn.filled {
+  background: var(--ink); color: var(--bg);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 96px 56px 80px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
+  align-items: start;
+}
+
+.hero-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.hero-h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: clamp(56px, 7vw, 96px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 36px;
+}
+
+.hero-h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.hero-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--ink-mid);
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.hero-cta {
+  display: flex; gap: 16px; align-items: center;
+}
+
+.btn-dark {
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-dark:hover { background: var(--accent); }
+
+.btn-outline {
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--rule);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-outline:hover { border-color: var(--ink); }
+
+/* hero right — stats */
+.hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  align-self: start;
+  margin-top: 12px;
+}
+
+.stat-block {
+  background: var(--bg);
+  padding: 28px 32px;
+}
+
+.stat-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.stat-n sub {
+  font-size: 24px;
+  color: var(--ink-soft);
+  vertical-align: baseline;
+}
+
+.stat-l {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--rule);
+}
+
+.trust-item {
+  padding: 28px 32px;
+  border-right: 1px solid var(--rule);
+}
+.trust-item:last-child { border-right: none; }
+
+.trust-icon {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+
+.trust-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.trust-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* ── CATALOGUE ── */
+.catalogue-header {
+  padding: 48px 56px 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+}
+
+.catalogue-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+}
+
+.filter-btn {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1.5px solid var(--rule);
+  background: transparent;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.filter-btn:hover { border-color: var(--ink-mid); color: var(--ink); }
+.filter-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+/* table */
+.t-head {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr 0.8fr 0.7fr 0.8fr 0.9fr 1fr;
+  padding: 14px 56px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.th {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.lot-row {
+  display: grid;
+  grid-template-columns: 2.4fr 1fr 0.8fr 0.7fr 0.8fr 0.9fr 1fr;
+  padding: 0 56px;
+  border-bottom: 1px solid var(--rule);
+  min-height: 96px;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.15s;
+  opacity: 0;
+  animation: rowIn 0.35s ease forwards;
+}
+.lot-row:hover { background: var(--surface); }
+.lot-row.sold-row { opacity: 0.38 !important; pointer-events: none; }
+
+@keyframes rowIn { to { opacity: 1; } }
+.lot-row:nth-child(1){animation-delay:.04s}
+.lot-row:nth-child(2){animation-delay:.08s}
+.lot-row:nth-child(3){animation-delay:.12s}
+.lot-row:nth-child(4){animation-delay:.16s}
+.lot-row:nth-child(5){animation-delay:.20s}
+.lot-row:nth-child(6){animation-delay:.24s}
+
+.lot-id {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+}
+
+.lot-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.lot-producer {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.origin-main { font-size: 14px; font-weight: 600; color: var(--ink); }
+.origin-sub { font-size: 12px; color: var(--ink-soft); margin-top: 2px; }
+
+.process-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border: 1.5px solid;
+}
+.process-tag.washed   { border-color: #3A78A0; color: #3A78A0; }
+.process-tag.natural  { border-color: var(--accent); color: var(--accent); }
+.process-tag.honey    { border-color: #8A6020; color: #8A6020; }
+.process-tag.anaerobic{ border-color: #6A3080; color: #6A3080; }
+
+.score-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 32px;
+  color: var(--ink);
+  line-height: 1;
+}
+.score-l { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 3px; }
+
+.avail-n { font-size: 15px; font-weight: 600; color: var(--ink); }
+.avail-l { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 2px; }
+.limited-flag { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+
+.price-n {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--ink);
+  line-height: 1;
+}
+.price-l { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-top: 3px; }
+
+.row-action-btn {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  border: 1.5px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.row-action-btn:hover { background: var(--ink); color: var(--bg); }
+
+/* ── SLIDE PANEL ── */
+.backdrop {
+  display: none; position: fixed; inset: 0;
+  background: rgba(24,23,20,0.45); z-index: 190;
+}
+.backdrop.open { display: block; }
+
+.panel {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 500px;
+  background: var(--bg);
+  border-left: 1px solid var(--rule);
+  z-index: 200;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16,1,0.3,1);
+  overflow-y: auto;
+}
+.panel.open { transform: translateX(0); }
+
+.panel-nav {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  padding: 20px 36px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+.panel-close {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  background: none; border: none;
+  color: var(--ink-soft); cursor: pointer;
+  transition: color 0.15s;
+  display: flex; align-items: center; gap: 8px;
+}
+.panel-close:hover { color: var(--ink); }
+
+.panel-lot-ref {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.panel-inner { padding: 40px 36px 56px; }
+
+.panel-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.panel-sub {
+  font-size: 14px; color: var(--ink-soft);
+  margin-bottom: 36px;
+}
+
+.panel-score-row {
+  display: flex; align-items: flex-end; gap: 16px;
+  padding: 28px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+
+.p-score-big {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.03em;
+}
+
+.p-score-info { padding-bottom: 10px; }
+.p-score-label {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.p-score-note { font-size: 13px; color: var(--ink-mid); margin-top: 4px; }
+
+.panel-notes-label {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 12px;
+}
+
+.panel-notes {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink);
+  margin-bottom: 36px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 28px;
+}
+
+.d-cell { background: var(--bg); padding: 18px 22px; }
+.d-label { font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+.d-val { font-size: 14px; font-weight: 500; color: var(--ink); }
+
+.cert-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+.cert {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 6px 14px;
+  border: 1.5px solid var(--rule);
+  color: var(--ink-mid);
+}
+
+.panel-price-row {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.p-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 1;
+  color: var(--ink);
+}
+.p-price-l { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 6px; }
+
+.p-avail-n { font-size: 22px; font-weight: 600; color: var(--ink); text-align: right; }
+.p-avail-l { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); text-align: right; margin-top: 4px; }
+
+.panel-btn {
+  display: block; width: 100%;
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 16px;
+  background: var(--ink); color: var(--bg);
+  border: none; cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.panel-btn:hover { background: var(--accent); }
+.panel-btn.sec {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--rule);
+}
+.panel-btn.sec:hover { background: var(--surface); border-color: var(--ink-mid); }
+
+/* ── MODAL ── */
+.modal-bg {
+  display: none; position: fixed; inset: 0;
+  background: rgba(24,23,20,0.5); z-index: 300;
+  align-items: center; justify-content: center; padding: 24px;
+}
+.modal-bg.open { display: flex; }
+
+.modal {
+  background: var(--bg);
+  width: 100%; max-width: 520px;
+  border: 1px solid var(--rule);
+  position: relative;
+  animation: mIn 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes mIn { from { transform: translateY(20px); opacity: 0; } to { opacity: 1; transform: none; } }
+
+.modal-head {
+  padding: 36px 44px 28px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.modal-x {
+  position: absolute; top: 20px; right: 28px;
+  background: none; border: none;
+  font-size: 22px; color: var(--ink-soft);
+  cursor: pointer; line-height: 1;
+  transition: color 0.15s;
+}
+.modal-x:hover { color: var(--ink); }
+
+.modal-eyebrow {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 10px;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700; font-size: 32px;
+  color: var(--ink);
+}
+
+.modal-body { padding: 32px 44px 44px; }
+
+.field { margin-bottom: 20px; }
+.field label {
+  display: block;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 8px;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--rule);
+  background: var(--surface);
+  font-family: 'Figtree', sans-serif;
+  font-size: 14px; font-weight: 400;
+  color: var(--ink); outline: none;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--ink);
+}
+.field textarea { resize: vertical; min-height: 80px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.modal-submit {
+  width: 100%; padding: 16px;
+  background: var(--ink); color: var(--bg);
+  border: none;
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s; margin-top: 6px;
+}
+.modal-submit:hover { background: var(--accent); }
+
+.success {
+  padding: 64px 44px;
+  text-align: center;
+}
+.success-icon { font-size: 36px; color: var(--accent); margin-bottom: 20px; }
+.success-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700; font-size: 32px;
+  color: var(--ink); margin-bottom: 14px;
+}
+.success-body { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--rule);
+  padding: 32px 56px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700; font-size: 20px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--ink);
+}
+.footer-note {
+  font-size: 12px; font-weight: 500;
+  color: var(--ink-soft); letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <a href="#" class="logo">Origen</a>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">View Lots</button>
+    <button class="nav-btn filled" onclick="openModal(null)">Request Sample</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <div class="hero-label">Private buyer catalogue · June 2026</div>
+    <h1 class="hero-h1">
+      Green beans<br>worth <em>roasting.</em>
+    </h1>
+    <p class="hero-body">
+      Verified micro-lots sourced directly from producers across eleven origins. Every lot is Q-grader cupped, scored, and traceable to farm level. We handle logistics — you focus on the roast.
+    </p>
+    <div class="hero-cta">
+      <button class="btn-dark" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">Browse the catalogue</button>
+      <button class="btn-outline" onclick="openModal(null)">Get in touch</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-block">
+      <div class="stat-n">24</div>
+      <div class="stat-l">Active lots</div>
+    </div>
+    <div class="stat-block" style="border-top:1px solid var(--rule)">
+      <div class="stat-n">11</div>
+      <div class="stat-l">Origins</div>
+    </div>
+    <div class="stat-block" style="border-top:1px solid var(--rule)">
+      <div class="stat-n">87<sub>+</sub></div>
+      <div class="stat-l">Avg SCA score</div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust strip -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <div class="trust-icon">◈</div>
+    <div class="trust-title">Q-grader certified</div>
+    <div class="trust-desc">Every lot scored by a licensed Q-grader before listing.</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">◈</div>
+    <div class="trust-title">Farm-level traceability</div>
+    <div class="trust-desc">Origin documentation provided on every transaction.</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">◈</div>
+    <div class="trust-title">Samples in 48 hours</div>
+    <div class="trust-desc">250g to 1kg samples dispatched within two working days.</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">◈</div>
+    <div class="trust-title">Escrow payments</div>
+    <div class="trust-desc">Secure payment held until delivery is confirmed.</div>
+  </div>
+</div>
+
+<!-- Catalogue -->
+<section id="catalogue">
+  <div class="catalogue-header">
+    <div class="catalogue-title">Available lots</div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterLots('all',this)">All</button>
+      <button class="filter-btn" onclick="filterLots('washed',this)">Washed</button>
+      <button class="filter-btn" onclick="filterLots('natural',this)">Natural</button>
+      <button class="filter-btn" onclick="filterLots('honey',this)">Honey</button>
+      <button class="filter-btn" onclick="filterLots('anaerobic',this)">Anaerobic</button>
+      <button class="filter-btn" onclick="filterLots('available',this)">In stock</button>
+    </div>
+  </div>
+
+  <div class="t-head">
+    <div class="th">Lot</div>
+    <div class="th">Origin</div>
+    <div class="th">Process</div>
+    <div class="th">Score</div>
+    <div class="th">Available</div>
+    <div class="th">Price / kg</div>
+    <div class="th"></div>
+  </div>
+  <div id="lot-list"></div>
+</section>
+
+<footer>
+  <div class="footer-logo">Origen</div>
+  <div class="footer-note">Private catalogue · Not for distribution · hello@origengreen.com</div>
+</footer>
+
+<!-- Slide panel -->
+<div class="backdrop" id="backdrop" onclick="closeAll()"></div>
+<div class="panel" id="panel">
+  <div class="panel-nav">
+    <button class="panel-close" onclick="closePanel()">Close</button>
+    <div class="panel-lot-ref" id="panel-ref"></div>
+  </div>
+  <div class="panel-inner" id="panel-inner"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modal-bg">
+  <div class="modal">
+    <button class="modal-x" onclick="closeModal()">×</button>
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<script>
+const lots = [
+  { id:'OG-001', name:'Yirgacheffe Kochere', origin:'Ethiopia', region:'Gedeo Zone', producer:'Kochere Washing Station', process:'washed', altitude:'1,900–2,200m', score:91.5, price:8.20, available:340, notes:'Bergamot, jasmine, lemon verbena, stone fruit — exceptional clarity and brightness.', certs:['Organic','Fair Trade'], limited:false, sold:false },
+  { id:'OG-002', name:'Huila El Paraíso', origin:'Colombia', region:'Huila', producer:'Diego Samuel Bermúdez', process:'anaerobic', altitude:'1,750m', score:92.0, price:11.80, available:60, notes:'Tropical ferment, red wine, hibiscus, blackcurrant — extraordinary depth, long finish.', certs:[], limited:true, sold:false },
+  { id:'OG-003', name:'Guji Hambela', origin:'Ethiopia', region:'Oromia', producer:'Hambela Estate', process:'natural', altitude:'2,050–2,300m', score:89.5, price:7.40, available:0, notes:'Blueberry, dark chocolate, rose water — dense and fruit-forward, winey body.', certs:['Rainforest Alliance'], limited:false, sold:true },
+  { id:'OG-004', name:'Boquete Lerida', origin:'Panama', region:'Chiriquí', producer:'Finca Lérida', process:'washed', altitude:'1,600m', score:90.0, price:13.50, available:120, notes:'Honeysuckle, white peach, brown sugar — elegant Panama, clean lingering finish.', certs:['Rainforest Alliance'], limited:false, sold:false },
+  { id:'OG-005', name:'Sidama Shantawene', origin:'Ethiopia', region:'Sidama Zone', producer:'Shantawene Cooperative', process:'honey', altitude:'1,800–2,000m', score:88.5, price:6.90, available:600, notes:'Apricot jam, milk chocolate, chamomile — sweet and approachable, excellent espresso anchor.', certs:['Organic'], limited:false, sold:false },
+  { id:'OG-006', name:'Chirinos Sol & Sombra', origin:'Peru', region:'Cajamarca', producer:'CENFROCAFE Cooperative', process:'washed', altitude:'1,700–1,900m', score:87.5, price:5.80, available:800, notes:'Hazelnut, milk chocolate, gentle citrus — balanced and clean, ideal for volume roasting.', certs:['Organic','Fair Trade'], limited:false, sold:false },
+];
+
+function renderLots(filter) {
+  const list = document.getElementById('lot-list');
+  list.innerHTML = '';
+  const filtered = filter === 'all' ? lots : filter === 'available' ? lots.filter(l => !l.sold) : lots.filter(l => l.process === filter);
+  filtered.forEach((lot, i) => {
+    const r = document.createElement('div');
+    r.className = 'lot-row' + (lot.sold ? ' sold-row' : '');
+    r.style.animationDelay = (i * 0.05 + 0.04) + 's';
+    r.onclick = () => { if (!lot.sold) openPanel(lot.id); };
+    r.innerHTML = `
+      <div>
+        <div class="lot-id">${lot.id}</div>
+        <div class="lot-name">${lot.name}</div>
+        <div class="lot-producer">${lot.producer}</div>
+      </div>
+      <div>
+        <div class="origin-main">${lot.origin}</div>
+        <div class="origin-sub">${lot.region}</div>
+      </div>
+      <div><span class="process-tag ${lot.process}">${lot.process}</span></div>
+      <div>
+        <div class="score-n">${lot.score}</div>
+        <div class="score-l">SCA</div>
+      </div>
+      <div>
+        ${lot.sold
+          ? '<div class="avail-n" style="color:var(--ink-soft)">—</div><div class="avail-l">Sold out</div>'
+          : `<div class="avail-n">${lot.available}kg</div><div class="avail-l">in stock</div>${lot.limited ? '<div class="limited-flag">Limited</div>' : ''}`}
+      </div>
+      <div>
+        <div class="price-n">£${lot.price.toFixed(2)}</div>
+        <div class="price-l">per kg</div>
+      </div>
+      <div>
+        ${lot.sold
+          ? '<span style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft)">Sold out</span>'
+          : `<button class="row-action-btn" onclick="event.stopPropagation();openPanel('${lot.id}')">View lot →</button>`}
+      </div>
+    `;
+    list.appendChild(r);
+  });
+}
+
+function filterLots(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLots(type);
+}
+
+function openPanel(id) {
+  const lot = lots.find(l => l.id === id);
+  if (!lot) return;
+  document.getElementById('panel-ref').textContent = lot.id;
+  document.getElementById('panel-inner').innerHTML = `
+    <div class="panel-name">${lot.name}</div>
+    <div class="panel-sub">${lot.producer} · ${lot.origin}, ${lot.region}</div>
+    <div class="panel-score-row">
+      <div class="p-score-big">${lot.score}</div>
+      <div class="p-score-info">
+        <div class="p-score-label">SCA Cup Score</div>
+        <div class="p-score-note">Q-grader certified</div>
+      </div>
+    </div>
+    <div class="panel-notes-label">Tasting notes</div>
+    <div class="panel-notes">"${lot.notes}"</div>
+    <div class="detail-grid">
+      <div class="d-cell"><div class="d-label">Origin</div><div class="d-val">${lot.origin}</div></div>
+      <div class="d-cell"><div class="d-label">Region</div><div class="d-val">${lot.region}</div></div>
+      <div class="d-cell"><div class="d-label">Process</div><div class="d-val" style="text-transform:capitalize">${lot.process}</div></div>
+      <div class="d-cell"><div class="d-label">Altitude</div><div class="d-val">${lot.altitude}</div></div>
+    </div>
+    ${lot.certs.length ? `<div class="cert-row">${lot.certs.map(c=>`<span class="cert">${c}</span>`).join('')}</div>` : ''}
+    <div class="panel-price-row">
+      <div>
+        <div class="p-price">£${lot.price.toFixed(2)}</div>
+        <div class="p-price-l">per kg · green unroasted</div>
+      </div>
+      <div>
+        <div class="p-avail-n">${lot.sold ? '—' : lot.available + 'kg'}</div>
+        <div class="p-avail-l">${lot.sold ? 'sold out' : 'available'}</div>
+      </div>
+    </div>
+    <button class="panel-btn" onclick="openModal('${lot.id}')">Request a sample →</button>
+    <button class="panel-btn sec" onclick="openModal('${lot.id}')">Enquire about full lot</button>
+  `;
+  document.getElementById('panel').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+
+function closePanel() {
+  document.getElementById('panel').classList.remove('open');
+  if (!document.getElementById('modal-bg').classList.contains('open'))
+    document.getElementById('backdrop').classList.remove('open');
+}
+
+let currentLotId = null;
+
+function openModal(lotId) {
+  currentLotId = lotId || null;
+  const lot = lotId ? lots.find(l => l.id === lotId) : null;
+  document.getElementById('modal-inner').innerHTML = `
+    <div class="modal-head">
+      <div class="modal-eyebrow">${lot ? lot.id + ' · Sample request' : 'General enquiry'}</div>
+      <div class="modal-title">${lot ? lot.name : 'Get in touch'}</div>
+    </div>
+    <div class="modal-body">
+      <div data-fs-success class="success" style="display:none">
+        <div class="success-icon">✦</div>
+        <div class="success-title">Request received</div>
+        <p class="success-body">We'll be in touch within 24 hours with sample details and shipping options.<br><br>
+          <span style="font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft)">marcus.eades@icloud.com</span>
+        </p>
+      </div>
+      <div data-fs-error style="font-size:12px;color:#C0392B;margin-bottom:12px;display:none"></div>
+      <form id="origen-form">
+        <input type="hidden" name="_subject" value="Origen sample request">
+        <input type="hidden" name="_replyto" id="replyto-field">
+        <div class="field">
+          <label>Full name</label>
+          <input type="text" name="name" placeholder="Jane Smith" data-fs-field required>
+          <span data-fs-error="name" style="font-size:11px;color:#C0392B;margin-top:4px;display:block"></span>
+        </div>
+        <div class="field">
+          <label>Roastery or company</label>
+          <input type="text" name="company" placeholder="Blackbird Coffee Co." data-fs-field>
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" name="email" placeholder="jane@yourroastery.com" data-fs-field required
+            oninput="document.getElementById('replyto-field').value=this.value">
+          <span data-fs-error="email" style="font-size:11px;color:#C0392B;margin-top:4px;display:block"></span>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Sample size</label>
+            <select name="sample-size" data-fs-field>
+              <option>250g</option><option>500g</option><option>1kg</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Monthly volume</label>
+            <select name="monthly-volume" data-fs-field>
+              <option>&lt; 100kg/mo</option><option>100–500kg/mo</option><option>500kg+/mo</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Notes</label>
+          <textarea name="notes" placeholder="Roast profile, certifications required, shipping preferences..." data-fs-field></textarea>
+        </div>
+        <button type="submit" class="modal-submit" data-fs-submit-btn>Send request →</button>
+      </form>
+    </div>
+  `;
+
+  // Init Formspree on the freshly rendered form
+  if (window.formspree) {
+    window.formspree('initForm', { formElement: '#origen-form', formId: 'xvznklqy' });
+  }
+  document.getElementById('modal-bg').classList.add('open');
+  document.getElementById('backdrop').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-bg').classList.remove('open');
+  if (!document.getElementById('panel').classList.contains('open'))
+    document.getElementById('backdrop').classList.remove('open');
+}
+
+function submitModal() {
+  const form = document.getElementById('origen-form');
+  if (!form) return;
+
+  // Set hidden lot field before submit
+  const lotField = form.querySelector('[name="_subject"]');
+  if (lotField) lotField.value = `Origen sample request — ${currentLotId || 'General enquiry'}`;
+
+  form.requestSubmit();
+}
+
+function closeAll() { closePanel(); closeModal(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+renderLots('all');
+</script>
+
+<!-- Formspree Ajax SDK -->
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+</body>
+</html>
